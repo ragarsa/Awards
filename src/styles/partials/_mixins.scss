@@ -1,0 +1,31 @@
+@mixin resizable($direction) {
+    overflow: auto; // Per CSS3 UI, `resize` only applies when `overflow` isn't `visible`
+    resize: $direction; // Options: horizontal, vertical, both
+  }
+  
+
+@mixin telefono{
+    @media (min-width: $telefono){
+        @content;
+    }
+}
+
+@mixin tablet{
+    @media (min-width: $tablet){
+        @content;
+    }
+}
+
+@mixin desktop{
+    @media (min-width: $desktop){
+        @content;
+    }
+}
+
+@mixin grid($columnas, $espaciado){
+    display:grid; 
+    grid-template-columns: repeat($columnas, 1fr);
+    gap: $espaciado
+}
+
+

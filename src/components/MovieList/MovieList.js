@@ -1,75 +1,53 @@
-import React from 'react';
-import * as styles from './MovieList.scss';
-import Button from '../common/button/button'
-
+import React, { useEffect, useState } from 'react';
+import * as styles from './MovieList.scss'
+import getMovies from '../../helpers/getMovies';
+import GetList from '../../views/GetMovieList';
+import InputControl from '../common/input/input';
 
 const MovieList = () => {
+    const [movies, setMovies] = useState([])
+
+
+    useEffect(() => {
+
+        setRank()
+
+    }, [movies]);
+
+    const setRank = async () => {
+        //Simulacion asíncrona
+        let data = await getMovies()
+        data = data.sort((elemento, reductor) => {
+            if (elemento.votes > reductor.votes) {
+                return -1;
+            }
+            if (elemento.votes < reductor.votes) {
+                return 1;
+            }
+            // a must be equal to b
+            return 0;
+        })
+        data = data.map((value,index) => {
+                value.position = index+1
+                return value
+        });
+        setMovies(data)
+        
+    }
+
+
 
     return (
         <>
-            <div className={styles.contenedorPeliculas}>
-                <div className={styles.pelicula}>
-                    <div>
-                        <span>
-                            <h2>
-                                Nombre de la Película
-                            </h2>
-                        </span>
-
-                        <img src="https://image.tmdb.org/t/p/w500/ux2dU1jQ2ACIMShzB3yP93Udpzc.jpg"></img>
-                        <div className="contenedorInfoVotos">
-                            <h4>
-                                Posicion : 
-                            </h4>
-                            <h4>
-                                Puntaje: 
-                            </h4>
-                            <Button></Button>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div className={styles.pelicula}>
-                    <div>
-                        <span>
-                            <h2>
-                                Nombre de la Película
-                        </h2>
-                        </span>
-
-                        <img src="https://image.tmdb.org/t/p/w500/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg"></img>
-                        <div className="contenedorInfoVotos">
-                            <h4>
-                                Posicion
-                            </h4>
-                            <button> 
-                                Votar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className={styles.pelicula}>
-                    <div>
-                        <span>
-                            <h2>
-                                Nombre de la Película
-                        </h2>
-                        </span>
-
-                        <img src="https://image.tmdb.org/t/p/w500/qa6HCwP4Z15l3hpsASz3auugEW6.jpg"></img>
-                        <div className="contenedorInfoVotos">
-                            <h4>
-                                Posicion
-                            </h4>
-                            <button> 
-                                Votar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <InputControl onChange={handleFilterMovie}/>
+        <div className={styles.contenedorPeliculas}>
+            {movies.map(movie =>
+                <GetList
+                    key={movie.id}
+                    movie={movie}
+                />
+            )}
+        </div>
         </>
     )
 }

@@ -43,9 +43,14 @@
 
   h4 {
     text-transform: uppercase;
-    font-weight: $regular;
+    font-weight: $bold;
     color: $negro
   }
 }
 
+.contenedorInfoVotos {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+}
 

@@ -8,3 +8,5 @@
 *.ipr
 .idea/
 .webpack.config.js
+
+.{/* Javascript<header className={'header': true, 'sticky':var}> */}

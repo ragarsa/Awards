@@ -4,7 +4,8 @@
 
 .button {
   width: 100%;
-  margin: 10px;
+  height: 5rem;
+  margin: 0.5rem;
   padding: 12px 12px;
 
   cursor: pointer;
@@ -14,8 +15,8 @@
   white-space: nowrap;
   text-decoration: none;
   text-transform: none;
-  text-transform: capitalize;
-
+  text-transform: uppercase;
+  background-color: $negro;
   color: $oro;
   font-weight: $bold;
   border: 0 none;
@@ -27,10 +28,12 @@
   justify-content: center;
   align-items: center;
 
-  box-shadow: 1px 3px 5px $gray-400;
-
   &:hover {
     transition: all 150ms linear;
+    background-color: $oro;
+    color: $negro;
+    font-size: 1.5rem;
+    font-weight: $bold;
     opacity: .85;
   }
 

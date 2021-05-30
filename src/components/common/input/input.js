@@ -3,11 +3,11 @@ import styles from './input.scss'
 
 
 
-const InputControl = () => {
+const InputControl = ({value, handleFilterMovie, handleInputOut}) => {
     return (
         
             <div className={styles.contenedor} >
-                <input type="text" placeholder="Busca tu pelicula favorita"></input>
+                <input value={value} onChange={handleFilterMovie} onBlur={handleInputOut} type="text" placeholder="Busca tu pelicula favorita"></input>
             </div>
         
     )

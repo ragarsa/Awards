@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './button'
+import * as styles from './button.scss'
 
-const Button = () => (
-  <button className={styles.button}>Vota</button>
+const Button = ({handleShowDetail, id}) => (
+  <button onClick={() => handleShowDetail(id)} className={styles.button}>Vota</button>
 );
 
 export default Button;

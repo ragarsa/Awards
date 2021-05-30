@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import * as styles from './MovieList.scss'
+// import DrawerNavigator from './navigation/DrawerNavigator';
+// import {UserContext} from '../../hooks/useContext'
+// import {useHistory, useParams} from 'react-router-dom';
+import * as styles from './MovieList.scss';
 import getMovies from '../../helpers/getMovies';
-import GetList from '../../views/GetMovieList';
+import GetList from '../../views/GetMovieList/GetMovieList';
 import InputControl from '../common/input/input';
 
-const MovieList = () => {
-    const [movies, setMovies] = useState([])
 
+let value = ''
+
+const MovieList = () => {
+    const [movies, setMovies] = useState([]);
+    const [valueBool, setBool] = useState(true);
+    const [movieFilter, setMovieFilter] = useState([]);
 
     useEffect(() => {
 
-        setRank()
+        setRank();
 
     }, [movies]);
 
     const setRank = async () => {
         //Simulacion asíncrona
-        let data = await getMovies()
+        let data = await getMovies();
         data = data.sort((elemento, reductor) => {
             if (elemento.votes > reductor.votes) {
                 return -1;
@@ -26,30 +33,59 @@ const MovieList = () => {
             }
             // a must be equal to b
             return 0;
-        })
-        data = data.map((value,index) => {
-                value.position = index+1
-                return value
         });
-        setMovies(data)
+        data = data.map((value, index) => {
+            value.position = index + 1
+            return value
+        });
+        setMovies(data);
         
+    };
+
+
+    const handleFilterMovie = (event) => {
+        value = event.target.value.toLowerCase();
+
+        let filter = movies.filter(movie => movie.title.toLowerCase().includes(value.toLowerCase()))
+        setMovieFilter(filter)
+        setBool(false)
+        console.log(filter)
     }
 
+    const handleInputOut = (event) => {
+        value = ''
+        setBool(true)
+        const filterMovie = movieFilter.map(movie => {
+            return movie.title
+        });
+
+
+    }
 
 
     return (
         <>
-        <InputControl onChange={handleFilterMovie}/>
-        <div className={styles.contenedorPeliculas}>
-            {movies.map(movie =>
-                <GetList
-                    key={movie.id}
-                    movie={movie}
-                />
-            )}
-        </div>
+            <InputControl value={value} handleFilterMovie={handleFilterMovie} handleInputOut={handleInputOut} />
+            <div className={styles.contenedorPeliculas}>
+                {(valueBool) ? movies.map(movie =>
+                    <GetList
+                        key={movie.id}
+                        movie={movie}
+                    />
+                ) : movieFilter.map(movie =>
+                    <GetList
+                        key={movie.id}
+                        movie={movie}
+                    />
+                )}
+
+
+
+            </div>
+
         </>
     )
+
 }
 
 export default MovieList;

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as styles from './button.scss'
+import './button.scss';
 
 const Button = ({handleShowDetail, id}) => (
   <button onClick={() => handleShowDetail(id)} className="button">Vota</button>

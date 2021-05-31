@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import DrawerNavigator from './navigation/DrawerNavigator';
-// import {UserContext} from '../../hooks/useContext'
-// import {useHistory, useParams} from 'react-router-dom';
-import * as styles from './MovieList.scss';
+import './MovieList.scss';
 import {getMovies} from '../../helpers/getMovies';
 import GetList from '../../views/GetMovieList/GetMovieList';
 import InputControl from '../common/input/input';

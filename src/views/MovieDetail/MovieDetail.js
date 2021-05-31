@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../../components/common/header/header';
+import Header from '../../components/Header/Header';
 
 import MovieDetailComponent from '../../components/MovieDetailC/MovieDetailComponent'
+import Footer from '../../components/Footer/Footer'
 
 
 
@@ -23,7 +24,7 @@ const MovieDetail = ({ location }) => {
                 key={movie.id}
             />
 
-
+        <Footer></Footer>
 
         </>
     )

@@ -43,10 +43,13 @@ a {
     color:$negro;
     font-weight: $regular;
     text-transform: uppercase;
-    transition: $oro 1s ;
+    transition: ease 0.5s;
+    
     &:hover {
-    color: $oro;
+    transition: ease 0.5s;
+    font-weight: $bold;
     font-size: 2rem;
+    text-decoration: underline 0.5rem $oro;
 
     }
 }

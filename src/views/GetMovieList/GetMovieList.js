@@ -31,7 +31,7 @@ const GetList = (props) => {
                         </h2>
                     </span>
 
-                    <img src={poster}></img>
+                    <img src={poster} alt={title} Loading="lazy"></img>
                     <div className="contenedorInfoVotos">
                         <h4>
                             Posicion : {position}

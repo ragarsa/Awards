@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../common/header/header'
-import InputControl from '../common/input/input';
+import React from 'react';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header'
+
 import MovieList from '../MovieList/MovieList';
 
 
@@ -9,6 +10,7 @@ const Home = () => {
     <>
         <Header></Header>
         <MovieList></MovieList>
+        <Footer></Footer>
     </>
     )
 

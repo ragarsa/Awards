@@ -1,0 +1,9 @@
+@import '../partials/variables';
+@import '../partials/globales';
+@import '../partials/mixins';
+
+footer {
+    margin: 5rem 0 0 0;
+    background-color: $oro;
+    text-align: center;
+}

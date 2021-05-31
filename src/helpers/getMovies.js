@@ -19,25 +19,25 @@ const getMovies = async () => {
   
 } 
 
-const updateMovieById = (idMovie, votes) => {
-   let indexFound = -1
-   const movieMatch = Data.data.map((values, index) => {
-     if (values.id === idMovie){
-        indexFound = index
-     };
+// const updateMovieById = (idMovie, votes) => {
+//    let indexFound = -1
+//    const movieMatch = Data.data.map((values, index) => {
+//      if (values.id === idMovie){
+//         indexFound = index
+//      };
 
   
-});
-  if(indexFound > -1) { 
-     Data.data[indexFound].votes = votes
-   }else {
-      return 'None'
-   };
+// });
+//   if(indexFound > -1) { 
+//      Data.data[indexFound].votes = votes
+//    }else {
+//       return 'None'
+//    };
   
-//   console.log(Data.data[indexFound]);
+// //   console.log(Data.data[indexFound]);
 
-}
+// }
 
 
 
-export {getMovies, updateMovieById};
+export {getMovies};

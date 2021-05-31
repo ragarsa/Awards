@@ -1,21 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './MovieDetail.scss';
 const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 const MovieDetailComponent = ({ movie }) => {
 
-    const { id,
+    const {
         title,
         overview,
         release_date,
         poster,
         votes,
-        position,
-        genres
+        position
     } = movie
-
+    const [vote, setVote] = useState(votes)
     let date = new Date(release_date*1000)
     date = `${months[date.getMonth()]}-${date.getFullYear()}`
+    
+    const handlePlayVideo = () => {
+        console.log('yes')
+    }
+
+    const handleSumVote = () => {
+        setVote(vote+1)
+    }
+    const handleMinusVote = () => {
+        setVote(vote-1)
+    }
+    
     return (
         <>
             <div className="infoContainer">
@@ -23,8 +34,8 @@ const MovieDetailComponent = ({ movie }) => {
                 <h3>Position: <span>{position}</span></h3>
                 <div className="bodyContainer">
                     <div>
-                        <img className="poster" src={poster} alt={title}></img>
-                        <img className="play" src="https://www.crossfitilluminati.com/wp-content/uploads/2015/11/play-icon.png" alt="Watch Trailer"></img>
+                        <img onClick={() => handlePlayVideo()} className="poster" src={poster} alt={title}></img>
+                
                         
                     </div>
                     <div className="textContainer">
@@ -33,7 +44,11 @@ const MovieDetailComponent = ({ movie }) => {
                         </h3>
                         <p> {overview} </p>
                         <p> <span>Release:</span> {date} </p>
-                        <p><span>Votes: {votes} </span></p>
+                        <p><span>Votes: {vote} </span></p>
+                        <div className="buttonContainer">
+                            <button onClick={() => {handleSumVote()}}className="button-gold">Must win</button>
+                            <button onClick={() => {handleMinusVote()}} className="button-red">Not at all</button>
+                        </div>
                     </div>
                 </div>
 

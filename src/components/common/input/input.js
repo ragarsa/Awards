@@ -1,5 +1,5 @@
 import React from 'react';
-import * as styles from './input.scss'
+import './input.scss'
 
 
 
